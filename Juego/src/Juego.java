@@ -16,6 +16,7 @@ public class Juego extends javax.swing.JPanel {
     public Juego() {
         initComponents();
         Tablero miTablero = new Tablero();
+        new Juego().setVisible(true);
         
     }
 
@@ -31,6 +32,11 @@ public class Juego extends javax.swing.JPanel {
         e1 = new javax.swing.JTextField();
 
         e1.setText(" ");
+        e1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                e1FocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -49,6 +55,10 @@ public class Juego extends javax.swing.JPanel {
                 .addContainerGap(155, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void e1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_e1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_e1FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
