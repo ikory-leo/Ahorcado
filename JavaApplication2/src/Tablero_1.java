@@ -21,7 +21,9 @@ public class Tablero_1 extends javax.swing.JFrame {
      * Creates new form Tablero
      */
     public Tablero_1() {
+        
         initComponents();
+        
     }
 
     /**
@@ -109,17 +111,44 @@ public class Tablero_1 extends javax.swing.JFrame {
     }//GEN-LAST:event_e1FocusGained
 
     private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
-
-        letra=this.e1.getText().charAt(0);
-        if (miJuego.calcularError(letra) == 1) {
+letra=this.e1.getText().charAt(0);
+        if(miJuego.vidas==0){  
+            
+            miJuego.vidas=4;
+            this.l1.setText("_________");
+            this.l2.setText("_________");
+            this.l3.setText("_________");
+            this.l4.setText("_________");
+            
+    
+}else{
+            if (miJuego.calcularError(letra) > 0 && miJuego.calcularError(letra) < 5) {
                 JOptionPane.showMessageDialog(null, "excelente esa es");
-                this.l1.setText(String.valueOf(letra));
+                switch(miJuego.calcularError(letra))
+                        {
+                    case 0:
+                        this.l1.setText(String.valueOf(letra));
+                        break;
+                        case 1:
+                        this.l2.setText(String.valueOf(letra));
+                        break;
+                        case 2:
+                        this.l3.setText(String.valueOf(letra));
+                        break;
+                        case 3:
+                        this.l4.setText(String.valueOf(letra));
+                        break;
+                }
+                
                 
             } else {
 
                 miJuego.vidas--;
                 JOptionPane.showMessageDialog(null, "Tiene huevo, intente de nuevo, te quedan : " + miJuego.vidas + " vidas");
             }
+}
+      
+
         
         
 
