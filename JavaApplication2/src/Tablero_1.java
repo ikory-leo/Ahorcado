@@ -122,7 +122,7 @@ letra=this.e1.getText().charAt(0);
             
     
 }else{
-            if (miJuego.calcularError(letra) > 0 && miJuego.calcularError(letra) < 5) {
+            if (miJuego.calcularError(letra) >= 0 && miJuego.calcularError(letra) < 5) {
                 JOptionPane.showMessageDialog(null, "excelente esa es");
                 switch(miJuego.calcularError(letra))
                         {
