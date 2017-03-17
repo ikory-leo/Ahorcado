@@ -11,20 +11,18 @@
  * @author Estudiantes
  */
 public class Juego {
-    char [] casillas= new char [1];
-    int calcularError(){
-        for(int i=0;i>3;i++){
-            if(casillas[i]=='a'){
+    char [] casillas= {'s','o','p','a'};
+    int vidas=4;
+    
+    int calcularError(char letra){
+        for(int i=0;i<4;i++){
+            if(casillas[i]==letra){
                 return 1;
             }
             
         }
         
         return 0;
-    }
-
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

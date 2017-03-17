@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import javax.swing.JOptionPane;
 
 /**
@@ -12,18 +11,17 @@ import javax.swing.JOptionPane;
  * @author Estudiantes
  */
 public class Tablero_1 extends javax.swing.JFrame {
+
     char letra;
+    char resul;
     String palabra;
+    Juego miJuego = new Juego();
 
     /**
      * Creates new form Tablero
      */
     public Tablero_1() {
-        initComponents();        
-        Tablero_1 miTablero = new Tablero_1();
-        new Juego().setVisible(true);
-        
-  
+        initComponents();
     }
 
     /**
@@ -38,10 +36,12 @@ public class Tablero_1 extends javax.swing.JFrame {
         e1 = new javax.swing.JTextField();
         ok = new javax.swing.JButton();
         l1 = new javax.swing.JLabel();
+        l2 = new javax.swing.JLabel();
+        l3 = new javax.swing.JLabel();
+        l4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        e1.setText(" ");
         e1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 e1FocusGained(evt);
@@ -57,6 +57,12 @@ public class Tablero_1 extends javax.swing.JFrame {
 
         l1.setText("_________");
 
+        l2.setText("_________");
+
+        l3.setText("_________");
+
+        l4.setText("_________");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,17 +72,28 @@ public class Tablero_1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(e1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(ok))
+                        .addComponent(ok)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(l1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                        .addComponent(l1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(l4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(l1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(l1)
+                    .addComponent(l2)
+                    .addComponent(l3)
+                    .addComponent(l4))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ok)
@@ -92,13 +109,23 @@ public class Tablero_1 extends javax.swing.JFrame {
     }//GEN-LAST:event_e1FocusGained
 
     private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
-    palabra=this.e1.getText();
-    letra = palabra.charAt(0);
-    this.l1.setText(String.valueOf(e1));
+
+        letra=this.e1.getText().charAt(0);
+        if (miJuego.calcularError(letra) == 1) {
+                JOptionPane.showMessageDialog(null, "excelente esa es");
+                this.l1.setText(String.valueOf(letra));
+                
+            } else {
+
+                miJuego.vidas--;
+                JOptionPane.showMessageDialog(null, "Tiene huevo, intente de nuevo, te quedan : " + miJuego.vidas + " vidas");
+            }
+        
+        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_okMouseClicked
-
-    /**
+   /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -137,6 +164,9 @@ public class Tablero_1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField e1;
     private javax.swing.JLabel l1;
+    private javax.swing.JLabel l2;
+    private javax.swing.JLabel l3;
+    private javax.swing.JLabel l4;
     private javax.swing.JButton ok;
     // End of variables declaration//GEN-END:variables
 }
